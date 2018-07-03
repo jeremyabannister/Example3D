@@ -5,16 +5,16 @@
 //  Created by Jeremy Bannister on 7/3/18.
 //
 
-import Object3D
+@_exported import Object3D
 
-struct RoundedBox: Object3D, Equatable {
-  var position: Position3D
-  var size: Size3D
-  var cornerRadius: Double
+public struct RoundedBox: Object3D, Equatable {
+  public var position: Position3D
+  public var size: Size3D
+  public var cornerRadius: Double
 }
 
 extension RoundedBox {
-  var asObject3DEnum: Object3DEnum {
+  public var asObject3DEnum: Object3DEnum {
     let objects: [Object3DEnumConvertible] = [horizontalCube, verticalCube, lowerLeftCylinder, lowerRightCylinder, upperRightCylinder, upperLeftCylinder]
     return .union(position: position, objectEnums: objects.map({ $0.asObject3DEnum }))
   }

@@ -5,17 +5,17 @@
 //  Created by Jeremy Bannister on 7/3/18.
 //
 
-import Object3D
+@_exported import Object3D
 
-struct Slide: Object3D, Equatable {
-  var position: Position3D
-  var innerRadius: Double
-  var outerRadius: Double
-  var depth: Double
+public struct Slide: Object3D, Equatable {
+  public var position: Position3D
+  public var innerRadius: Double
+  public var outerRadius: Double
+  public var depth: Double
 }
 
 extension Slide {
-  var asObject3DEnum: Object3DEnum {
+  public var asObject3DEnum: Object3DEnum {
     return .difference(position: position, original: outerCylinder.asObject3DEnum, subtractions: [innerCylinder.asObject3DEnum])
   }
 }
