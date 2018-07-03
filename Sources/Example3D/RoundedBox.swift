@@ -11,6 +11,12 @@ public struct RoundedBox: Object3D, Equatable {
   public var position: Position3D
   public var size: Size3D
   public var cornerRadius: Double
+  
+  public init (position: Position3D, size: Size3D, cornerRadius: Double) {
+    self.position = position
+    self.size = size
+    self.cornerRadius = cornerRadius
+  }
 }
 
 extension RoundedBox {

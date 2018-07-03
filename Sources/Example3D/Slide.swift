@@ -12,6 +12,13 @@ public struct Slide: Object3D, Equatable {
   public var innerRadius: Double
   public var outerRadius: Double
   public var depth: Double
+  
+  public init (position: Position3D, innerRadius: Double, outerRadius: Double, depth: Double) {
+    self.position = position
+    self.innerRadius = innerRadius
+    self.outerRadius = outerRadius
+    self.depth = depth
+  }
 }
 
 extension Slide {
