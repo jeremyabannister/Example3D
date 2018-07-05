@@ -20,9 +20,9 @@ public struct RoundedBox: Object3D, Equatable {
 }
 
 extension RoundedBox {
-  public var asObject3DEnum: Object3DEnum {
-    let objects: [Object3DEnumConvertible] = [horizontalCube, verticalCube, lowerLeftCylinder, lowerRightCylinder, upperRightCylinder, upperLeftCylinder]
-    return .union(position: position, objectEnums: objects.map({ $0.asObject3DEnum }))
+  public var asRawObject3D: RawObject3D {
+    let objects: [RawObject3DConvertible] = [horizontalCube, verticalCube, lowerLeftCylinder, lowerRightCylinder, upperRightCylinder, upperLeftCylinder]
+    return .union(position: position, rawObjects: objects.map({ $0.asRawObject3D }))
   }
 }
 
@@ -55,4 +55,4 @@ private extension RoundedBox {
   }
 }
 
-extension RoundedBox: Size3DShortcuts { }
+extension RoundedBox: HasSize3D{ }

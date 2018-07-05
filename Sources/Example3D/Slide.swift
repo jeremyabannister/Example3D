@@ -22,8 +22,8 @@ public struct Slide: Object3D, Equatable {
 }
 
 extension Slide {
-  public var asObject3DEnum: Object3DEnum {
-    return .difference(position: position, original: outerCylinder.asObject3DEnum, subtractions: [innerCylinder.asObject3DEnum])
+  public var asRawObject3D: RawObject3D {
+    return .difference(position: position, original: outerCylinder.asRawObject3D, subtractions: [innerCylinder.asRawObject3D])
   }
 }
 
