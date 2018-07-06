@@ -7,6 +7,7 @@
 
 @_exported import Object3D
 
+// MARK: - --> Initial Declaration <--
 public struct RoundedBox: Object3D, Equatable {
   public var position: Position3D
   public var size: Size3D
@@ -18,14 +19,23 @@ public struct RoundedBox: Object3D, Equatable {
     self.cornerRadius = cornerRadius
   }
 }
+extension RoundedBox: HasSize3D { }
 
+// MARK: - Conversion to RawObject3D
 extension RoundedBox {
   public var asRawObject3D: RawObject3D {
-    let objects: [RawObject3DConvertible] = [horizontalCube, verticalCube, lowerLeftCylinder, lowerRightCylinder, upperRightCylinder, upperLeftCylinder]
-    return .union(position: position, rawObjects: objects.map({ $0.asRawObject3D }))
+    return .union(position: position, rawObjects: unionObjects.mapToRawObject3D)
   }
 }
 
+// MARK: - Child Object Lists
+private extension RoundedBox {
+  var unionObjects: [Object3D] {
+    return [horizontalCube, verticalCube, lowerLeftCylinder, lowerRightCylinder, upperRightCylinder, upperLeftCylinder]
+  }
+}
+
+// MARK: - Union Child Objects
 private extension RoundedBox {
   // Crossing Cubes
   var horizontalCube: Cube {
@@ -54,5 +64,3 @@ private extension RoundedBox {
     return upperRightCylinder.translated(by: -verticalCube.width, 0, 0)
   }
 }
-
-extension RoundedBox: HasSize3D{ }

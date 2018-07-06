@@ -7,6 +7,7 @@
 
 @_exported import Object3D
 
+// MARK: - --> Initial Declaration <--
 public struct Slide: Object3D, Equatable {
   public var position: Position3D
   public var innerRadius: Double
@@ -21,12 +22,14 @@ public struct Slide: Object3D, Equatable {
   }
 }
 
+// MARK: - Conversion to RawObject3D
 extension Slide {
   public var asRawObject3D: RawObject3D {
     return .difference(position: position, original: outerCylinder.asRawObject3D, subtractions: [innerCylinder.asRawObject3D])
   }
 }
 
+// MARK: - Child Objects
 private extension Slide {
   // Corner Cylinders
   var innerCylinder: Cylinder {
